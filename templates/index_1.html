@@ -6,25 +6,30 @@
 </head>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.dev.js"></script>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.dev.js"></script>-->
 <!--<script src="https//cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.min.js"></script>-->
 
 <body>
 	
 	<canvas id="canvas" height=300 width=250 style="border:1px solid #000000;"></canvas>
+	<br>
+	<img id="test_img" src="" alt="">
 
 	<!--<img id="faceimg" src="" height=200 width=180 alt="" style="border:1px solid #000000;">-->
 	<br>
 
-	<input value="Добавить изображение" type="button" id="add_img">
-	<br>
-	<input type="file" id="my_file" accept="image/*" style="display:none" onchange="load_img(this.files)">
+	<input type="file" id="fileElem" accept="image/*" style="display:none" onchange="load_img(this.files)">
 
-	<br>
+	<a href="#" id="fileSelect">Выберите фото</a> 
+
+
+
+	<br><br>
 
 	<input value="Отправить" type="button">
 
-	<script type="text/javascript" src="{{ url_for('static', filename='js/function.js') }}"></script>
+	<script type="text/javascript" script src = "../static/js/function_.js"></script>
+	<!--<script type="text/javascript" src="{{ url_for('static', filename='js/function.js') }}"></script>-->
 
 </body>
 
