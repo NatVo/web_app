@@ -35,9 +35,12 @@ function load_img(files) {
 
 function fill_canvas(img) {
 
-  var canvas = document.getElementById("canvas");
-  var ctx = canvas.getContext('2d');
-  ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+	var canvas = document.getElementById("canvas");
+  	var ctx = canvas.getContext('2d');
+  	ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+  	var base64 = canvas.toDataURL();
+  	socket.emit('my img', base64);
 }
 
 
