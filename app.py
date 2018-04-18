@@ -25,6 +25,7 @@ class App():
 
     @socketio.on('my img', namespace = '/test')
     def handle_message(image_b64):
+        print(image_b64)
         body = base64.b64decode(image_b64)
         #nparr = np.fromstring(body, np.uint8)
         #img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
