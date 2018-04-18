@@ -13,16 +13,20 @@
 	
 	<canvas id="canvas" height=300 width=250 style="border:1px solid #000000;"></canvas>
 
-	<!--<img id="faceimg" src="" height=200 width=180 alt="" style="border:1px solid #000000;">-->
-	<br>
-
-	<input value="Добавить изображение" type="button" id="add_img">
-	<br>
 	<input type="file" id="my_file" accept="image/*" style="display:none" onchange="load_img(this.files)">
 
+	<!--<img id="faceimg" src="../static/img/2.jpg" height=200 width=180 alt="" style="border:1px solid #000000;">-->
+	<br>
+	<input value="Добавить изображение" type="button" id="add_img">
 	<br>
 
-	<input value="Зарегистрироваться" type="button">
+
+	<p>Введите логин: </p><input id = 'login' type="text">
+	<p>Введите пароль: </p><input id = 'password' type="text">
+	<br><br>
+
+	<input id="sign_in" value="Зарегистрироваться" type="button">
+	<div id = "error"></div>
 
 	<script type="text/javascript" src="{{ url_for('static', filename='js/function.js') }}"></script>
 

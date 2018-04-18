@@ -39,8 +39,8 @@ function fill_canvas(img) {
   	var ctx = canvas.getContext('2d');
   	ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
-  	var base64 = canvas.toDataURL();
-  	socket.emit('my img', base64);
+  	return canvas.toDataURL();
+
 }
 
 
@@ -48,5 +48,28 @@ socket.on('connect', function() {
 	console.log('connected');
        socket.emit('my event', 'connected');
 });
+
+
+
+$("#sign_in").click( function () {
+
+	if ($('#login').val().length > 0 && $('#password').val().length > 0) {
+
+		var canvas = document.getElementById("canvas");	
+		var base64 = canvas.toDataURL();
+	 
+	    socket.emit('my img', base64.split(',')[1]);
+	    socket.emit('login', $('#login').val(), $('#password').val());
+
+	    $('#error').html('');
+
+
+	}
+	else {
+		$('#error').html('<p style = "color:red;"> Данные некооректны! </p>');
+	}
+
+});
+
 
 
