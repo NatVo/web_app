@@ -76,7 +76,17 @@ class App():
             Img().save_img(img_db, './img_buffer/img_db.png')
 
             img_crop = FaceRec().crop_face(img)
-            img_db_crop = FaceRec().crop_face(img)
+            img_db_crop = FaceRec().crop_face(img_db)
+
+            Img().save_img(img_crop, './img_buffer/img_crop.png')
+            Img().save_img(img_db_crop, './img_buffer/img_db_crop.png')
+
+            result = FaceRec().compare_img(img, img_db)
+
+            if (result < 0.6):
+                 emit('responce', ('Вы успешно аутентифицированы!', 1))
+            else:
+                 emit('responce', ('Система не может аутентифицировать пользователя!', 0))
 
         else:
             emit('responce', ('Неверный логин или пароль!', 0))
