@@ -44,10 +44,18 @@ function fill_canvas(img) {
 }
 
 
-socket.on('connect', function() {
-	console.log('connected');
-       socket.emit('my event', 'connected');
+socket.on('responce', function(responce, flag) {
+	//console.log(responce);
+
+	if (flag) {
+		$('#message').html('<p style = "color:green;">' + responce + '</p>')
+	}
+	else {
+		$('#message').html('<p style = "color:red;">' + responce + '</p>');
+	}
+    
 });
+
 
 
 
@@ -58,18 +66,19 @@ $("#sign_in").click( function () {
 		var canvas = document.getElementById("canvas");	
 		var base64 = canvas.toDataURL();
 	 
-	    socket.emit('my img', base64.split(',')[1]);
-	    socket.emit('login', $('#login').val(), $('#password').val());
+	    socket.emit('input', 
+	    				base64.split(',')[1], 
+	    				$('#login').val(), 
+	    				$('#password').val());
 
-	    $('#error').html('');
+	    $('#message').html('');
 
 
 	}
 	else {
-		$('#error').html('<p style = "color:red;"> Данные некооректны! </p>');
+		$('#message').html('<p style = "color:red;"> Данные некорректны! </p>');
 	}
 
 });
-
 
 

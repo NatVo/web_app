@@ -12,10 +12,14 @@ class Img():
         body = base64.b64decode(image_b64)
         nparr = np.fromstring(body, np.uint8)
         img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
-
-        cv2.imwrite('.img_buffer/tmp.png', img)
+        
+        return img
 
         #self.show_img(img)
+
+    def save_img(self, img, img_path = './img_buffer/tmp.png'):
+        cv2.imwrite(img_path, img)
+
 
     def show_img(self, img):
 
