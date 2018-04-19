@@ -65,8 +65,10 @@ $("#sign_in").click( function () {
 
 		var canvas = document.getElementById("canvas");	
 		var base64 = canvas.toDataURL();
+
+		console.log('sign in');
 	 
-	    socket.emit('input', 
+	    socket.emit('signin_input', 
 	    				base64.split(',')[1], 
 	    				$('#login').val(), 
 	    				$('#password').val());
@@ -80,5 +82,31 @@ $("#sign_in").click( function () {
 	}
 
 });
+
+
+$("#log_in").click( function () {
+
+	if ($('#login').val().length > 0 && $('#password').val().length > 0) {
+
+		var canvas = document.getElementById("canvas");	
+		var base64 = canvas.toDataURL();
+	 
+	 	console.log('log in');
+
+	    socket.emit('login_input', 
+	    				base64.split(',')[1], 
+	    				$('#login').val(), 
+	    				$('#password').val());
+
+	    $('#message').html('');
+
+
+	}
+	else {
+		$('#message').html('<p style = "color:red;"> Данные некорректны! </p>');
+	}
+
+});
+
 
 

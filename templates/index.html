@@ -11,7 +11,7 @@
 
 <body>
 	
-	<canvas id="canvas" height=300 width=250 style="border:1px solid #000000;"></canvas>
+	<canvas id="canvas" height=500 width=450 style="border:1px solid #000000;"></canvas>
 
 	<input type="file" id="my_file" accept="image/*" style="display:none" onchange="load_img(this.files)">
 
@@ -26,6 +26,7 @@
 	<br><br>
 
 	<input id="sign_in" value="Зарегистрироваться" type="button">
+	<input id="log_in" value="Войти" type="button">
 	<div id = "message"></div>
 
 	<script type="text/javascript" src="{{ url_for('static', filename='js/function.js') }}"></script>

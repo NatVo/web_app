@@ -10,8 +10,6 @@ from flask_socketio import emit
 
 from utils.img_preprocess import Img
 from utils.predict import Predict
-from utils.face_rec import FaceRec
-
 from db import DB_interact
 
 from app import app
@@ -47,13 +45,10 @@ class App():
         pred = Predict('/home/nat/Documents/model/bin_face.h5', img).predict()
         
         if (pred):
-            
             login_exist = DB_interact().check_login(login)
-            
             if (login_exist == None):
                 DB_interact().add_user(login, password, image_b64)
                 emit('responce', ('Вы успешно зарегистрированы!', 1))
-            
             else:
                 emit('responce', ('Пользователь с таким именем уже существует!', 0))
 
@@ -69,18 +64,7 @@ class App():
         print('login: {}'.format(login))
         print('password: {}'.format(password))
         
-        check, img_db = DB_interact().check_user(login, password)
-
-        if (check):
-            img_db = Img().decode_img(img_db)
-            Img().save_img(img_db, './img_buffer/img_db.png')
-
-            img_crop = FaceRec().crop_face(img)
-            img_db_crop = FaceRec().crop_face(img)
-
-        else:
-            emit('responce', ('Неверный логин или пароль!', 0))
-
+        #DB_interact.find_user(login, password)
 
      
 
